@@ -63,18 +63,20 @@
           var $username = $('<span class="username"></span>').text(data.username);
           var $message = $('<span class="message"></span>').text(data.message);
           $messages.append($('<li class="message"></li>').append($username).append(': ').append($message));
-          $messages.scrollTo($messages[0].scrollHeight);
+          scrollToBottom();
         });
 
         socket.on('join', function (data) {
           var $username = $('<span class="username"></span>').text(data.username);
           $messages.append($('<li class="join"></li>').append($username).append(' has joined the chatroom.'));
+          scrollToBottom();
         });
 
         socket.on('username', function (data) {
           var $oldUsername = $('<span class="old-username"></span>').text(data.oldUsername);
           var $newUsername = $('<span class="new-username"></span>').text(data.newUsername);
           $messages.append($('<li class="username"></li>').append($oldUsername).append(' is now known as ').append($newUsername));
+          scrollToBottom();
         });
 
         $('#send').click(function(event){
@@ -82,7 +84,12 @@
           if (message.length == 0) return;
           socket.emit('say', message);
           $message.val('');
+          scrollToBottom();
         });
+
+        var scrollToBottom = function(){
+          $messages[0].scrollTop = $messages[0].scrollHeight;
+        };
 
         $message.keyup(function(event){
           if (13 != event.keyCode) return;
