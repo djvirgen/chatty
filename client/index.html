@@ -57,7 +57,7 @@
       $(document).ready(function() {
         var $messages = $('#messages');
         var $message = $('#message');
-        var socket = io.connect('http://localhost');
+        var socket = io.connect('/');
 
         socket.on('message', function (data) {
           var $username = $('<span class="username"></span>').text(data.username);
