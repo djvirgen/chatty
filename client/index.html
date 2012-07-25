@@ -1,47 +1,7 @@
 <html>
   <head>
     <title>Simple chat o' rama</title>
-    <style type="text/css">
-    body{
-      background: #fff;
-      font-size: 125%;
-      color: #333;
-      font-family: arial;
-    }
-
-    input, button{
-      font-size: inherit;
-      padding: 4px;
-    }
-
-    ul#messages{
-      height: 400px;
-      overflow: auto;
-      padding: 4px;
-      margin: 0;
-      list-style-type: none;
-      border: 1px solid #ccc;
-    }
-
-    ul#messages li{
-      margin: 0;
-      padding: 2px;
-    }
-
-    li .username, .old-username, .new-username{
-      font-weight: bold;
-    }
-
-    li.username{
-      font-style: italic;
-      color: #999;
-    }
-
-    li.join{
-      font-style: italic;
-      color: #f92;
-    }
-    </style>
+    <link type="text/css" src="/css/main.css"></link>
   </head>
   <body>
     <div>
@@ -72,6 +32,12 @@
           scrollToBottom();
         });
 
+        socket.on('leave', function (data) {
+          var $username = $('<span class="username"></span>').text(data.username);
+          $messages.append($('<li class="leave"></li>').append($username).append(' has left chatroom.'));
+          scrollToBottom();
+        });
+
         socket.on('username', function (data) {
           var $oldUsername = $('<span class="old-username"></span>').text(data.oldUsername);
           var $newUsername = $('<span class="new-username"></span>').text(data.newUsername);
@@ -84,6 +50,7 @@
           if (message.length == 0) return;
           socket.emit('say', message);
           $message.val('');
+          $message.focus();
           scrollToBottom();
         });
 
@@ -109,6 +76,10 @@
         $('#change-username').click(function(event){
           event.preventDefault();
           changeUsername();
+        });
+
+        $(window).unload(function(event){
+          socket.emit('disconnect', '');
         });
       });
     </script>

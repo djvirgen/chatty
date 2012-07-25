@@ -1,27 +1,59 @@
-var app = require('express').createServer()
-  , io = require('socket.io').listen(app),
-  port = process.env.PORT || 3000;
+var express = require('express'),
+  app = express.createServer(),
+  jade = require('jade'),
+  io = require('socket.io').listen(app),
+  port = process.env.PORT || 3000,
+  chatrooms = [];
 
-app.listen(port);
+// Configuration
+app.configure(function(){
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(app.router);
+  app.use(express.static(__dirname + '/public'));
+});
+
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  app.set('view options', { pretty: true });
+});
+
+app.configure('production', function(){
+  app.use(express.errorHandler());
+});
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/client/index.html');
+  res.render('chatroom');
+});
+
+// Run!!!
+app.listen(port, function(){
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
 
 io.sockets.on('connection', function (socket) {
   var username = null;
 
+  // Change username (or join)
   socket.on('username', function(newUsername){
     var oldUsername = username;
     username = newUsername;
     if (null === oldUsername) {
-      socket.emit('join', {username: username});
+      io.sockets.emit('join', {username: username});
     } else {
-      socket.emit('username', {oldUsername: oldUsername, newUsername: username});
+      io.sockets.emit('username', {oldUsername: oldUsername, newUsername: username});
     }
   });
 
+  // Say something
   socket.on('say', function(message){
-    socket.emit('message', {username: username, message: message});
+    io.sockets.emit('message', {username: username, message: message});
+  });
+
+  // Leave
+  socket.on('disconnect', function () {
+    io.sockets.emit('leave', {username: username});
   });
 });

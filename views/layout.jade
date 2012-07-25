@@ -1,0 +1,30 @@
+!!!5
+html
+  head
+    title Chatty!
+    meta(name="keywords", content="resume web developer software engineer")
+    meta(name="title", content="Hector Virgen - Resume")
+    meta(name="description", content="Hector Virgen aims to develop standards-compliant web applications using object-oriented (OO) PHP5/JavaScript with a focus on user-friendliness, progressive enhancement, test-driven-development and best practices.")
+    link(rel="stylesheet", href="/css/blueprint/screen.css", type="text/css", media="screen, projection")
+    link(rel="stylesheet", href="/css/blueprint/print.css", type="text/css", media="print")
+    link(rel="stylesheet", href="/css/main.css", type="text/css", media="screen, projection, print")
+    link(rel="stylesheet", href="/css/print.css", type="text/css", media="print")
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", type="text/javascript")
+    script(src="/socket.io/socket.io.js", type="text/javascript")
+    script(src="/js/main.js", type="text/javascript")
+  body
+    header
+      .container
+        #title-container.span-7
+          a(href="/", class="title") Chatty!
+        .span-17.last
+          nav
+            ul
+              li: a(href="#newroom") New Room
+    section#content
+      .container
+        #main-container.span-24.last!=body
+    footer
+      .container
+       | Powered by 
+       a(href="http://www.virgentech.com") VirgenTech.com

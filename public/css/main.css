@@ -1,0 +1,293 @@
+html {
+  background: #c9c9c9;
+  font-size: 125%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  font-family: trebuchet ms;
+  line-height: 1.4;
+  color: #555;
+}
+
+header {
+  background: #191919;
+  box-shadow: inset 0 1.5em 3.5em rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  padding: 1em 0 0.25em;
+  border-bottom: 1px solid black;
+}
+
+header a {
+  color: #aaa;
+}
+
+header a.title {
+  font-size: 1.75em;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  top: -0.25em;
+  text-shadow: 0 0 6px #0099ff;
+}
+
+header nav {
+  display: block;
+  position: relative;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+}
+
+header nav ul li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li a {
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ccc;
+  width: 6em;
+  text-align: center;
+  margin-right: 0.5em;
+  padding: 0 0 0.2em;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s, color 0.2s;
+  -moz-transition: border-bottom-color 0.2s, color 0.2s;
+  -webkit-transition: border-bottom-color 0.3s, color 0.2s;
+  -o-transition: border-bottom-color 0.3s, color 0.2s;
+}
+
+header nav ul li a:visited {
+  color: #ccc;
+}
+
+header nav ul li a:hover {
+  color: #fff;
+  border-bottom-color: #09f;
+}
+
+header nav ul li a.selected {
+  color: #fff;
+  border-bottom: 2px solid #f90;
+}
+
+/* Content */
+section#content {
+  padding: 1em 2em;
+  min-height: 32em;
+  box-shadow: inset 0 0.4em 0.2em -0.2em rgba(0, 0, 0, 0.2), inset 0 -200px 100px -200px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  padding: 0.5em 2em;
+  background: #191919;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1em 2em rgba(255, 255, 255, 0.15);
+  font-size: 0.85em;
+}
+
+a {
+  color: #0088cc;
+}
+
+a:visited {
+  color: #007acc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #111111;
+  margin: 0.5em 0;
+  padding: 0.25em 0;
+}
+
+h1 {
+  border-bottom: 2px solid #f2f2f2;
+  font-size: 1.75em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h3 {
+  font-size: 1.0em;
+}
+
+form dl.fields {
+  padding: 0;
+  margin: 0;
+}
+
+form dl.fields dt {
+  float: left;
+  clear: left;
+  width: 10em;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+}
+
+form input,
+form textarea,
+form select,
+form select option {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
+form input[type=text],
+form input[type=number],
+form textarea {
+  width: 26em;
+  border: 1px solid #ccc;
+  padding: 0.25em;
+  color: #777;
+}
+
+form input[type=text]:focus,
+form textarea:focus {
+  box-shadow: inset 0 0.25em 0.25em rgba(0, 0, 0, 0.1);
+  outline: none;
+  border-color: #aaa;
+  color: #333;
+}
+
+form textarea {
+  height: 10em;
+}
+
+form dl.fields dt label {
+  font-weight: bold;
+}
+
+form dl.fields dd {
+  margin-left: 11em;
+  padding-bottom: 0.5em;
+}
+
+form dl.fields input.hour,
+form dl.fields input.minute {
+  width: 2.5em;
+  text-align: center;
+}
+
+form p.hint {
+  padding: 0.2em;
+  /*background: #ffa;
+  border: 1px solid #cc7;*/
+  color: #777;
+  margin: 0;
+  font-size: 0.65em;
+}
+
+form p.hint .example {
+  color: #555;
+  font-weight: bold;
+}
+
+form .actions {
+  margin-left: 11em;
+}
+
+form .actions input[type=submit] {
+  margin: 0 0.5em 0 0;
+  font-weight: bold;
+}
+
+/* Resume */
+#info{
+  font-size: 0.85em;
+}
+
+#resume dl{
+  padding: 0;
+  margin: -10px 0 0;
+}
+
+#resume dl dt{
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 0 0;
+  border-bottom: 1px solid #ccc;
+  color: #111;
+}
+
+#resume dl dd{
+  margin: 0;
+  padding: 2px 0 3px 20px;
+}
+
+#resume dl.top > dd{
+  font-size: 0.85em;
+}
+
+#resume #experience .title{
+  font-weight: bold;
+}
+
+#resume #experience .dates{
+  color: #999;
+}
+
+input, button{
+  font-size: inherit;
+  padding: 4px;
+}
+
+#change-username{
+  float: right;
+}
+
+input#message{
+  width: 20em;
+}
+
+ul#messages{
+  height: 300px;
+  overflow: auto;
+  padding: 4px;
+  margin: 0;
+  list-style-type: none;
+  border: 1px solid #ccc;
+}
+
+ul#messages li{
+  margin: 0;
+  padding: 2px;
+}
+
+li .username, .old-username, .new-username{
+  font-weight: bold;
+}
+
+li.username{
+  font-style: italic;
+  color: #999;
+}
+
+li.message .username{
+  color: #d63;
+}
+
+li.message .username.me{
+  color: #36d;
+}
+
+li.join, li.leave{
+  font-style: italic;
+  color: #f92;
+}
